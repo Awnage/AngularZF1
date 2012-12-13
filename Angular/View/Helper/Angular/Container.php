@@ -93,6 +93,13 @@ class AngularZF1_Angular_View_Helper_Angular_Container
     protected $_version = AngularZF1_Angular::DEFAULT_ANGULAR_VERSION;
 
     /**
+     * Dev or minified version?
+     *
+     * @var String
+     */
+    protected $_minified = true;
+
+    /**
      * Default Render Mode (all parts)
      *
      * @var Integer
@@ -171,6 +178,18 @@ class AngularZF1_Angular_View_Helper_Angular_Container
         return $this->_version;
     }
 
+    /**
+     * Set the version of the Angular library used.
+     *
+     * @param boolean $bool
+     * @return AngularZF1_Angular_View_Helper_Angular_Container
+     */
+    public function setMinified($bool)
+    {
+        $this->_minified = ($bool==true);
+        return $this;
+    }
+    
     /**
      * Use CDN, using version specified. Currently supported
      * by Googles Ajax Library API are: 1.2.3, 1.2.6
@@ -538,7 +557,7 @@ class AngularZF1_Angular_View_Helper_Angular_Container
             $source = $baseUri .
                 AngularZF1_Angular::CDN_SUBFOLDER_ANGULAR .
                 $this->getCdnVersion() .
-            	AngularZF1_Angular::CDN_ANGULAR_PATH_GOOGLE;
+            	($this->_minified==true? AngularZF1_Angular::CDN_ANGULAR_MIN_PATH_GOOGLE : AngularZF1_Angular::CDN_ANGULAR_PATH_GOOGLE);
         }
 
         return $source;

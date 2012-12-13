@@ -102,6 +102,9 @@ class AngularZF1_Application_Resource_Angular
                 case 'localpath':
                     $this->_view->Angular()->setLocalPath($value);
                     break;
+                case 'minified':
+                    $this->_view->Angular()->setMinified($value);
+                    break;
                 case 'render_mode':
                 case 'rendermode':
                     $this->_view->Angular()->setRenderMode($value);

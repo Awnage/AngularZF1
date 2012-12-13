@@ -15,7 +15,9 @@ Modify your application config ini to include
     pluginPaths.AngularZF1_Application_Resource = "AngularZF1/Application/Resource"
     resources.Angular.enable = true
     resources.Angular.render_mode = 255
-    resources.Angular.version = "1.0.2"
+    resources.Angular.version = "1.0.3"
+    resources.Angular.minified = false
+
 
 Add the following line to the head section of your layout.phtml
 

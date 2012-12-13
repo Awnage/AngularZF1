@@ -47,13 +47,21 @@ class AngularZF1_Angular
     const CDN_SUBFOLDER_ANGULAR = 'angularjs/';
 
     /**
-     * Always uses compressed version, because this is assumed to be the use case
-     * in production enviroment. An uncompressed version has to included manually.
+     * Default uses compressed version, because this is assumed to be the use case
+     * in production enviroment. 
      *
      * @see https://developers.google.com/speed/libraries/devguide#angularjs
      * @const string File path after base and version
      */
-    const CDN_ANGULAR_PATH_GOOGLE = '/angular.min.js';
+    const CDN_ANGULAR_MIN_PATH_GOOGLE = '/angular.min.js';
+
+    /**
+     * Non-compressed version.
+     *
+     * @see https://developers.google.com/speed/libraries/devguide#angularjs
+     * @const string File path after base and version
+     */
+    const CDN_ANGULAR_PATH_GOOGLE = '/angular.js';
 
     /**
      * Which parts of the the Angular library should be rendered on echo'ing
