@@ -1,6 +1,6 @@
 # AngularZF1
 
-by [Gregory Wilson](http://drakos7.net)
+by [Gregory Wilson](http://drakos7.net) and [Rosina Bignall](http://rosinabignall.com)
 
 AngularZF1 is a [Zend Framework version 1]() resource plugin to enable [AngularJs]() in your views.
 It is a fork from the ZendX_JQuery component. In contrast to ZendX_JQuery, this plugin automatically
@@ -23,3 +23,8 @@ Add the following line to the head section of your layout.phtml
 
     <?php echo $this->angular() . "\n"; ?>
 
+Like the Url helper for making easy links and getting urls that depend on the 
+routes and router. Use helper angularUrl to create urls from routes which include 
+angular data-binding.
+
+    <?php echo $this->angularUrl(array('name' => '{{name}}'),'routename'); ?>
