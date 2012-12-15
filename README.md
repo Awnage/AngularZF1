@@ -38,7 +38,7 @@ additional Angular plugins by modifying your config.ini to include
     resources.Angular.plugin.resource.enable = false
     ; Angular UI
     resources.Angular.plugin.ui.enable = false
-    resources.Angular.plugin.ui.base = '/js/angular-ui'
+    resources.Angular.plugin.ui.base = '/js'
 
 Each plugin has a .enable.  If true, the scripts will be added to the head
 section when you use $this->angular().   If .enable is false, you can include
