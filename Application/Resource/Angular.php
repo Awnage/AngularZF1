@@ -57,6 +57,24 @@ class AngularZF1_Application_Resource_Angular
     protected $_view;
 
     /**
+     * Contains registered plugins
+     *
+     * @var array
+     */
+    protected $_plugins = array();
+
+
+    /**
+     * Standard plugins
+     *
+     * @var array
+     */
+    public static $standardPlugins = array(
+        'Resource',
+        'Ui',
+        );
+
+    /**
      * Defined by Zend_Application_Resource_Resource
      *
      * @return AngularZF1_Angular_View_Helper_Angular_Container
@@ -117,6 +135,9 @@ class AngularZF1_Application_Resource_Angular
                         $this->_view->Angular()->addJavascriptFile($file);
                     }
                     break;
+                case 'plugin':
+                    $this->_registerPlugins($value);
+                    break;
             }
         }
 
@@ -128,4 +149,47 @@ class AngularZF1_Application_Resource_Angular
             $this->_view->Angular()->disable();
         }
     }
+
+
+    /**
+     * Load plugins set in config option
+     *
+     * @return void;
+     */
+    protected function _registerPlugins($plugins)
+    {
+        $angular = $this->_view->Angular();
+
+        foreach ($plugins as $plugin => $options) {
+            // Register an instance
+            if (is_object($plugin) && in_array('AngularZF1_Application_Resource_Plugin_Interface', class_implements($plugin))) {
+                $angular->registerPlugin($plugin);
+                continue;
+            }
+
+            if (!is_string($plugin)) {
+                throw new Exception("Invalid plugin name", 1);
+            }
+            $plugin = ucfirst($plugin);
+
+            // Register a classname
+            if (in_array($plugin, AngularZF1_Application_Resource_Angular::$standardPlugins)) {
+                // standard plugin
+                $pluginClass = 'AngularZF1_Application_Resource_Plugin_' . $plugin;
+            } else {
+                // we use a custom plugin
+                if (!preg_match('~^[\w]+$~D', $plugin)) {
+                    throw new Zend_Exception("AngularZF1: Invalid plugin name [$plugin]");
+                }
+                $pluginClass = $plugin;
+            }
+
+            require_once str_replace('_', DIRECTORY_SEPARATOR, $pluginClass) . '.php';
+            $object = new $pluginClass($options, $angular);
+            $angular->registerPlugin($object);
+        }
+    }
+
+
+
 }

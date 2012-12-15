@@ -114,6 +114,13 @@ class AngularZF1_Angular_View_Helper_Angular_Container
     public $view = null;
 
     /**
+     * Registered Plugins
+     *
+     * @var array AngularZF1_Application_Resource_Plugin_Interface
+     */
+    public $_plugins = array();
+
+    /**
      * Set view object
      *
      * @param  Zend_View_Interface $view
@@ -122,6 +129,16 @@ class AngularZF1_Angular_View_Helper_Angular_Container
     public function setView(Zend_View_Interface $view)
     {
         $this->view = $view;
+    }
+
+    /**
+     * Get view object
+     *
+     * @return Zend_View_Interface
+     */
+    public function getView()
+    {
+        return $this->view;
     }
 
     /**
@@ -179,7 +196,7 @@ class AngularZF1_Angular_View_Helper_Angular_Container
     }
 
     /**
-     * Set the version of the Angular library used.
+     * Set whether to use the minified or dev version
      *
      * @param boolean $bool
      * @return AngularZF1_Angular_View_Helper_Angular_Container
@@ -190,6 +207,16 @@ class AngularZF1_Angular_View_Helper_Angular_Container
         return $this;
     }
     
+    /**
+     * Use the minified version (true) or dev version (false)?
+     *
+     * @return AngularZF1_Angular_View_Helper_Angular_Container
+     */
+    public function isMinified()
+    {
+        return $this->_minified;
+    }
+
     /**
      * Use CDN, using version specified. Currently supported
      * by Googles Ajax Library API are: 1.2.3, 1.2.6
@@ -451,6 +478,47 @@ class AngularZF1_Angular_View_Helper_Angular_Container
     }
 
     /**
+     * Register a new plugin
+     *
+     * @param AngularZF1_Application_Resource_Angular_Plugin_Interface
+     * @return AngularZF1_Application_Resource_Angular
+     */
+    public function registerPlugin(AngularZF1_Application_Resource_Plugin_Interface $plugin)
+    {
+        $this->_plugins[$plugin->getIdentifier()] = $plugin;
+        return $this;
+    }
+
+    /**
+     * Get plugin
+     *
+     * @param string $name
+     * @return  AngularZF1_Application_Resource_Angular_Plugin_Interface
+     */
+    public function getPlugin($name)
+    {
+        return (isset($this->_plugins[$name]))? $this->_plugins[$name] : null;
+    }
+
+    /**
+     * Get base uri for the angular library
+     *
+     * @return string
+     */
+    public function getBaseUri()
+    {
+        if($this->_angularLibraryPath != null) {
+            $source = $this->_angularLibraryPath;
+        } else {
+            $baseUri = $this->_getAngularLibraryBaseCdnUri();
+            $source = $baseUri
+                . AngularZF1_Angular::CDN_SUBFOLDER_ANGULAR
+                . $this->getCdnVersion();
+        }
+        return $source;
+    }
+
+    /**
      * String representation of Angular environment
      *
      * @return string
@@ -485,6 +553,12 @@ class AngularZF1_Angular_View_Helper_Angular_Container
         if( ($this->getRenderMode() & AngularZF1_Angular::RENDER_SOURCES) > 0) {
             foreach($this->getJavascriptFiles() AS $javascriptFile) {
                 $scriptTags .= '<script type="text/javascript" src="' . $javascriptFile . '"></script>'.PHP_EOL;
+            }
+        }
+
+        foreach ($this->_plugins as $plugin) {
+            if ($plugin->isEnabled()) {
+                $scriptTags .= $plugin->renderScriptTags().PHP_EOL;
             }
         }
 
@@ -562,5 +636,6 @@ class AngularZF1_Angular_View_Helper_Angular_Container
 
         return $source;
     }
+
 
 }
