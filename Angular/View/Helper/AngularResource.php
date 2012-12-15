@@ -69,7 +69,9 @@ class AngularZF1_Angular_View_Helper_AngularResource extends Zend_View_Helper_Ab
     public function angularResource()
     {
         $plugin = $this->_container->getPlugin('Resource');
-        $plugin->addScripts($this->view);
+        if ($plugin) {
+            $plugin->addScripts($this->view);
+        }
         return ;
     }
 

@@ -69,7 +69,9 @@ class AngularZF1_Angular_View_Helper_AngularUi extends Zend_View_Helper_Abstract
     public function angularUi()
     {
         $plugin = $this->_container->getPlugin('UI');
-        $plugin->addScripts($this->view);
+        if ($plugin) {
+            $plugin->addScripts($this->view);
+        }
         return ;
     }
 
