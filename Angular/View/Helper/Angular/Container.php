@@ -556,6 +556,22 @@ class AngularZF1_Angular_View_Helper_Angular_Container
             }
         }
 
+        // Make IE happy http://docs.angularjs.org/guide/ie
+        $scriptTags .= <<<IEHAPPY
+     <!--[if lte IE 8]>
+      <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+ 
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+      </script>
+    <![endif]--> 
+IEHAPPY;
+
         foreach ($this->_plugins as $plugin) {
             if ($plugin->isEnabled()) {
                 $scriptTags .= $plugin->renderScriptTags().PHP_EOL;
