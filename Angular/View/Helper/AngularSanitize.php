@@ -66,7 +66,7 @@ class AngularZF1_Angular_View_Helper_AngularSanitize extends Zend_View_Helper_Ab
      *
      * @return void
      */
-    public function angularResource()
+    public function angularSanitize()
     {
         $plugin = $this->_container->getPlugin('Sanitize');
         if ($plugin) {
