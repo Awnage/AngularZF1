@@ -71,6 +71,7 @@ class AngularZF1_Application_Resource_Angular
      */
     public static $standardPlugins = array(
         'Resource',
+        'Sanitize',
         'Ui',
         );
 

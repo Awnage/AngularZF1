@@ -31,11 +31,13 @@ angular data-binding.
 
 ## Plugins
 
-Current plugins include angular-resource and angular-ui. You can include
+Current plugins include angular-resource, angular-sanitize and angular-ui. You can include
 additional Angular plugins by modifying your config.ini to include
 
     ; Angular resource
     resources.Angular.plugin.resource.enable = false
+    ; Angular sanitize
+    resources.Angular.plugin.sanitize.enable = false
     ; Angular UI
     resources.Angular.plugin.ui.enable = false
     resources.Angular.plugin.ui.base = '/js'
@@ -44,5 +46,6 @@ Each plugin has a .enable.  If true, the scripts will be added to the head
 section when you use $this->angular().   If .enable is false, you can include
 the scripts by adding the following lines to your view script.
 
+    <?php $this->angularSanitize(); ?>
     <?php $this->angularResource(); ?>
     <?php $this->angularUi(); ?>
