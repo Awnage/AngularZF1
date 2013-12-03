@@ -1,6 +1,6 @@
 # AngularZF1
 
-by [Gregory Wilson](http://drakos7.net) and [Rosina Bignall](http://rosinabignall.com)
+by [Rosina Bignall](http://rosinabignall.com) and [Gregory Wilson](http://drakos7.net)
 
 AngularZF1 is a [Zend Framework version 1]() resource plugin to enable [AngularJs]() in your views.
 It is a fork from the ZendX_JQuery component. In contrast to ZendX_JQuery, this plugin automatically
@@ -36,6 +36,8 @@ additional Angular plugins by modifying your config.ini to include
 
     ; Angular resource
     resources.Angular.plugin.resource.enable = false
+    ; Angular route
+    resources.Angular.plugin.route.enable = false
     ; Angular sanitize
     resources.Angular.plugin.sanitize.enable = false
     ; Angular UI
@@ -46,6 +48,7 @@ Each plugin has a .enable.  If true, the scripts will be added to the head
 section when you use $this->angular().   If .enable is false, you can include
 the scripts by adding the following lines to your view script.
 
-    <?php $this->angularSanitize(); ?>
     <?php $this->angularResource(); ?>
+    <?php $this->angularRoute(); ?>
+    <?php $this->angularSanitize(); ?>
     <?php $this->angularUi(); ?>
