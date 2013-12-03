@@ -66,7 +66,7 @@ class AngularZF1_Angular_View_Helper_AngularRoute extends Zend_View_Helper_Abstr
      *
      * @return void
      */
-    public function angularSanitize()
+    public function angularRoute()
     {
         $plugin = $this->_container->getPlugin('Route');
         if ($plugin) {
