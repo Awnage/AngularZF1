@@ -74,7 +74,7 @@ class AngularZF1_Application_Resource_Angular
         'Route',
         'Sanitize',
         'Ui',
-        'UiBootstrap',
+        'Uibootstrap',
         );
 
     /**
