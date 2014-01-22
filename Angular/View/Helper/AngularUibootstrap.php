@@ -37,7 +37,7 @@ require_once "AngularZF1/Angular/View/Helper/Angular/Container.php";
  * @copyright  Copyright (c) 2012 Rosina Bignall (http://rosinabignall.com)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
-class AngularZF1_Angular_View_Helper_AngularUi extends Zend_View_Helper_Abstract
+class AngularZF1_Angular_View_Helper_AngularUibootstrap extends Zend_View_Helper_Abstract
 {
 
     const ANGULAR_REGISTRY = 'AngularZF1_Angular_View_Helper_Angular';
