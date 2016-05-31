@@ -75,6 +75,10 @@ class AngularZF1_Application_Resource_Angular
         'Sanitize',
         'Ui',
         'Uibootstrap',
+        'Animate',
+        'Aria',
+        'Messages',
+        'Material'
         );
 
     /**

@@ -123,9 +123,9 @@ class AngularZF1_Application_Resource_Plugin_Material
     }
 
     /**
-     * Enable Angular UI whenever Angular is included
+     * Enable Angular Material when needed
      *
-     * @return AngularZF1_Application_Resource_Plugin_UI
+     * @return AngularZF1_Application_Resource_Plugin_Material
      */
     public function enable()
     {
@@ -134,9 +134,9 @@ class AngularZF1_Application_Resource_Plugin_Material
     }
 
     /**
-     * Disable Angular UI unless specifically added
+     * Disable Angular Material unless specifically added
      *
-     * @return AngularZF1_Application_Resource_Plugin_UI
+     * @return AngularZF1_Application_Resource_Plugin_Material
      */
     public function disable()
     {
