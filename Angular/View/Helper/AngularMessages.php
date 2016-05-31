@@ -66,7 +66,7 @@ class AngularZF1_Angular_View_Helper_AngularMessages extends Zend_View_Helper_Ab
      *
      * @return void
      */
-    public function angularRoute()
+    public function angularMessages()
     {
         $plugin = $this->_container->getPlugin('Messages');
         if ($plugin) {
