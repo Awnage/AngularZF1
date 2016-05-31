@@ -55,6 +55,11 @@ class AngularZF1_Application_Resource_Plugin_Material
     const CDN_SUBFOLDER_ANGULARMATERIAL = 'angular_material/';
 
     /**
+     * @const string
+     */
+    const DEFAULT_VERSION = '1.1.0-rc2';
+
+    /**
      * Default uses compressed version, because this is assumed to be the use case
      * in production enviroment.
      *
@@ -101,6 +106,12 @@ class AngularZF1_Application_Resource_Plugin_Material
      */
     protected $_enabled = false;
 
+    /**
+     * Indicates version to use
+     *
+     * @var string
+     */
+    protected $_version = self::DEFAULT_VERSION;
 
     /**
      *
@@ -162,6 +173,28 @@ class AngularZF1_Application_Resource_Plugin_Material
     public function getIdentifier()
     {
         return self::IDENTIFIER;
+    }
+
+    /**
+     * Set the version of the Angular Material library used.
+     *
+     * @param string $version
+     * @return AngularZF1_Application_Resource_Plugin_Material
+     */
+    public function setVersion($version)
+    {
+        $this->_version = $version;
+        return $this;
+    }
+
+    /**
+     * Get the version used with the Angular library
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->_version;
     }
 
 
@@ -242,7 +275,7 @@ class AngularZF1_Application_Resource_Plugin_Material
         if (null === $this->_base) {
             $baseUri = AngularZF1_Angular::CDN_BASE_GOOGLE .
                 self::CDN_SUBFOLDER_ANGULARMATERIAL .
-                $this->getCdnVersion();
+                $this->getVersion();
         } else {
             $baseUri = $this->_base;
         }
