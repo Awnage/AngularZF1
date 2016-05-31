@@ -240,7 +240,7 @@ class AngularZF1_Application_Resource_Plugin_Material
     protected function _getBasePath()
     {
         if (null === $this->_base) {
-            $baseUri = AngularZF1_Angular::_getAngularLibraryBaseCdnUri() .
+            $baseUri = AngularZF1_Angular_View_Helper_Angular_Container::_getAngularLibraryBaseCdnUri() .
                 self::CDN_SUBFOLDER_ANGULARMATERIAL .
                 $this->getCdnVersion();
         } else {
