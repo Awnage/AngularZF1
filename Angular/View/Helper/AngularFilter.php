@@ -66,7 +66,7 @@ class AngularZF1_Angular_View_Helper_AngularFilter extends Zend_View_Helper_Abst
      *
      * @return void
      */
-    public function angularMaterial()
+    public function angularFilter()
     {
         $plugin = $this->_container->getPlugin('Filter');
         if ($plugin) {
