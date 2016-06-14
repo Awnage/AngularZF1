@@ -78,7 +78,8 @@ class AngularZF1_Application_Resource_Angular
         'Animate',
         'Aria',
         'Messages',
-        'Material'
+        'Material',
+        'Filter'
         );
 
     /**
