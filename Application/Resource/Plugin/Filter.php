@@ -118,6 +118,9 @@ class AngularZF1_Application_Resource_Plugin_Filter
                 case 'base':
                     $this->_base = (string) $value;
                 break;
+                case 'version':
+                    $this->_version = (string) $value;
+                    break;
             }
         }
     }
@@ -125,7 +128,7 @@ class AngularZF1_Application_Resource_Plugin_Filter
     /**
      * Enable Angular Filter when needed
      *
-     * @return AngularZF1_Application_Resource_Plugin_Material
+     * @return AngularZF1_Application_Resource_Plugin_Filter
      */
     public function enable()
     {
@@ -134,7 +137,7 @@ class AngularZF1_Application_Resource_Plugin_Filter
     }
 
     /**
-     * Disable Angular Material unless specifically added
+     * Disable Angular Filter unless specifically added
      *
      * @return AngularZF1_Application_Resource_Plugin_Filter
      */

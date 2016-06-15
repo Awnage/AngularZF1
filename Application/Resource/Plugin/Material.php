@@ -129,6 +129,9 @@ class AngularZF1_Application_Resource_Plugin_Material
                 case 'base':
                     $this->_base = (string) $value;
                 break;
+                case 'version':
+                    $this->_version = (string) $value;
+                    break;
             }
         }
     }
