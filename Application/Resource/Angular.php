@@ -82,7 +82,7 @@ class AngularZF1_Application_Resource_Angular
         'Filter',
         'Restangular',
         'Lodash',
-        'UiRouter'
+        'Uirouter'
         );
 
     /**

@@ -39,7 +39,7 @@ require_once "AngularZF1/Application/Resource/Plugin/Interface.php";
  * @copyright  Copyright (c) 2016 Rosina Bignall (http://rosinabignall.com)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
-class AngularZF1_Application_Resource_Plugin_UiRouter
+class AngularZF1_Application_Resource_Plugin_Uirouter
     implements AngularZF1_Application_Resource_Plugin_Interface
 {
 
