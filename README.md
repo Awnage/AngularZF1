@@ -35,6 +35,7 @@ Current plugins include angular-resource(https://docs.angularjs.org/api/ngResour
 angular-route(https://docs.angularjs.org/api/ngRoute), 
 angular-sanitize(https://docs.angularjs.org/api/ngSanitize), 
 angular-ui(http://angular-ui.github.io/), 
+angular-ui-router(https://github.com/angular-ui/ui-router), 
 angular-uibootstrap(https://angular-ui.github.io/bootstrap/), 
 angular-animate(https://docs.angularjs.org/api/ngAnimate), 
 angular-aria(https://docs.angularjs.org/api/ngAria), 
@@ -54,6 +55,8 @@ You can include additional Angular plugins by modifying your config.ini to inclu
     ; Angular UI
     resources.Angular.plugin.ui.enable = false
     resources.Angular.plugin.ui.base = '/js'
+    ; Angular UI Router
+    resources.Angular.plugin.uirouter.enable = false
     ; Angular UI Bootstrap
     resources.Angular.plugin.uibootstrap.enable = false
     resources.Angular.plugin.uibootstrap.base = '/js'
@@ -67,9 +70,9 @@ You can include additional Angular plugins by modifying your config.ini to inclu
     resources.Angular.plugin.material.enable = false
     ; Angular filter
     resources.Angular.plugin.filter.enable = false
-    ; Angular filter
+    ; Angular Restangular
     resources.Angular.plugin.restangular.enable = false
-    ; Angular filter
+    ; Angular lodash
     resources.Angular.plugin.lodash.enable = false
     
 
@@ -81,6 +84,7 @@ the scripts by adding the following lines to your view script.
     <?php $this->angularRoute(); ?>
     <?php $this->angularSanitize(); ?>
     <?php $this->angularUi(); ?>
+    <?php $this->angularUirouter(); ?>
     <?php $this->angularUiBootstrap(); ?> 
     <?php $this->angularAnimate(); ?>
     <?php $this->angularAria(); ?>
@@ -96,7 +100,7 @@ resources.Angular.base in your application config.
     
 Plugins for standard Angular modules (angular-resource, angular-sanitize, angular-animate,
 angular-aria, and angular-messages) use the same base as the Angular 
-plugin. The angular-material and angular-filter use the default CDNs 
+plugin. The angular-material, angular-filter and angular-ui-router use the default CDNs 
 as shown in their documentation. You can override the CDN by setting
 the .base in the resource configuration.  
     
