@@ -32,6 +32,7 @@ angular data-binding.
 ## Plugins
 
 Current plugins include angular-resource(https://docs.angularjs.org/api/ngResource), 
+angular-route(https://docs.angularjs.org/api/ngRoute), 
 angular-sanitize(https://docs.angularjs.org/api/ngSanitize), 
 angular-ui(http://angular-ui.github.io/), 
 angular-uibootstrap(https://angular-ui.github.io/bootstrap/), 
