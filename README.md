@@ -64,6 +64,10 @@ You can include additional Angular plugins by modifying your config.ini to inclu
     resources.Angular.plugin.material.enable = false
     ; Angular filter
     resources.Angular.plugin.filter.enable = false
+    ; Angular filter
+    resources.Angular.plugin.restangular.enable = false
+    ; Angular filter
+    resources.Angular.plugin.lodash.enable = false
     
 
 Each plugin has a .enable.  If true, the scripts will be added to the head
@@ -80,6 +84,8 @@ the scripts by adding the following lines to your view script.
     <?php $this->angularMessages(); ?>
     <?php $this->angularMaterial(); ?>
     <?php $this->angularFilter(); ?>
+    <?php $this->angularRestangular(); ?>
+    <?php $this->lodash(); ?>
   
 The Angular plugin uses the default google apis CDN as shown on the Angular
 homepage (https://angularjs.org/) to create the script tags. You can override it by setting 
