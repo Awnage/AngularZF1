@@ -79,7 +79,9 @@ class AngularZF1_Application_Resource_Angular
         'Aria',
         'Messages',
         'Material',
-        'Filter'
+        'Filter',
+        'Restangular',
+        'Lodash'
         );
 
     /**
