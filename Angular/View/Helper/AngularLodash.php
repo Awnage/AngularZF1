@@ -66,7 +66,7 @@ class AngularZF1_Angular_View_Helper_AngularLodash extends Zend_View_Helper_Abst
      *
      * @return void
      */
-    public function lodash()
+    public function angularLodash()
     {
         $plugin = $this->_container->getPlugin('Lodash');
         if ($plugin) {

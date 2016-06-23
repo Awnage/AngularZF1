@@ -39,7 +39,9 @@ angular-animate(https://docs.angularjs.org/api/ngAnimate),
 angular-aria(https://docs.angularjs.org/api/ngAria), 
 angular-messages(https://docs.angularjs.org/api/ngMessages),
 angular-material(https://material.angularjs.org/), 
-and angular-filter(https://github.com/a8m/angular-filter#angular-filter-----). 
+angular-filter(https://github.com/a8m/angular-filter#angular-filter-----),
+Restangular (https://github.com/mgonto/restangular) 
+and Lodash (https://lodash.com/). 
 You can include additional Angular plugins by modifying your config.ini to include
 
     ; Angular resource
@@ -85,7 +87,7 @@ the scripts by adding the following lines to your view script.
     <?php $this->angularMaterial(); ?>
     <?php $this->angularFilter(); ?>
     <?php $this->angularRestangular(); ?>
-    <?php $this->lodash(); ?>
+    <?php $this->angularLodash(); ?>
   
 The Angular plugin uses the default google apis CDN as shown on the Angular
 homepage (https://angularjs.org/) to create the script tags. You can override it by setting 
@@ -104,3 +106,11 @@ The Angular plugin uses a default version. You can override the default
 version by setting resources.Angular.version in your application config.
 The angular-filter and angular-material plugins also use default versions
 and can be overridden by setting the .version for the plugin.
+
+Notes:
+Lodash isn't an angular module, but it's required by Restangular so
+we make it easy by making a plugin for it. The restangular plugin will
+automatically include Lodash in the view.
+
+Aria, Messages and Animate are required by Angular Material, so they are
+automatically included in the view when Material is included.
