@@ -35,9 +35,9 @@ require_once 'Zend/Registry.php';
 require_once 'Zend/View/Helper/Abstract.php';
 
 /**
- * @see AngularZF1_Angular_View_Helper_Js_Container
+ * @see AngularZF1_Js_View_Helper_Js_Container
  */
-require_once "AngularZF1/Angular/View/Helper/Js/Container.php";
+require_once "AngularZF1/Js/View/Helper/Js/Container.php";
 
 /**
  * Js Helper. Functions as a stack for code and loads all Js dependencies.
