@@ -13,9 +13,9 @@
  * to license@zend.com so we can send you a copy immediately.
  *
  * @category    AngularZF1
- * @package     AngularZF1_Angular
+ * @package     AngularZF1_Js
  * @subpackage  View
- * @copyright  Copyright (c) 2012 Gregory Wilson (http://www.drakos7.net) and Rosina Bignall (http://rosinabignall.com)
+ * @copyright  Copyright (c) 2016 Rosina Bignall (http://rosina.me)
  * @license     http://opensource.org/licenses/bsd-license.php     New BSD License
  */
 
@@ -27,20 +27,20 @@ require_once 'Zend/Registry.php';
 /**
  * @see AngularZF1_Angular_View_Helper_Angular_Container
  */
-require_once "AngularZF1/Angular/View/Helper/Angular/Container.php";
+require_once "AngularZF1/Js/View/Helper/Js/Container.php";
 
 /**
- * Angular Helper. Functions as a stack for code and loads all Angular dependencies.
+ * Js Helper. Functions as a stack for code and loads all Js dependencies.
  *
- * @package    AngularZF1_Angular
+ * @package    AngularZF1_Js
  * @subpackage View
- * @copyright  Copyright (c) 2016 Rosina Bignall (http://rosinabignall.com)
+ * @copyright  Copyright (c) 2016 Rosina Bignall (http://rosina.me)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
-class AngularZF1_Angular_View_Helper_AngularLodash extends Zend_View_Helper_Abstract
+class AngularZF1_Js_View_Helper_JsLodash extends Zend_View_Helper_Abstract
 {
 
-    const ANGULAR_REGISTRY = 'AngularZF1_Angular_View_Helper_Angular';
+    const JS_REGISTRY = 'AngularZF1_Js_View_Helper_Js';
 
    /**
      * Initialize helper
@@ -54,19 +54,19 @@ class AngularZF1_Angular_View_Helper_AngularLodash extends Zend_View_Helper_Abst
     {
         $registry = Zend_Registry::getInstance();
         if (!isset($registry[self::ANGULAR_REGISTRY])) {
-            require_once 'AngularZF1/Angular/View/Helper/Angular/Container.php';
-            $container = new AngularZF1_Angular_View_Helper_Angular_Container();
-            $registry[self::ANGULAR_REGISTRY] = $container;
+            require_once 'AngularZF1/Angular/View/Helper/Js/Container.php';
+            $container = new AngularZF1_Js_View_Helper_Js_Container();
+            $registry[self::JS_REGISTRY] = $container;
         }
-        $this->_container = $registry[self::ANGULAR_REGISTRY];
+        $this->_container = $registry[self::JS_REGISTRY];
     }
 
     /**
-     * Return Angular View Helper class, to execute Angular library related functions.
+     * Return Js View Helper class, to execute Js library related functions.
      *
      * @return void
      */
-    public function angularLodash()
+    public function jsLodash()
     {
         $plugin = $this->_container->getPlugin('Lodash');
         if ($plugin) {

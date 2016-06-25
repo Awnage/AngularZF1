@@ -23,7 +23,7 @@
 /**
  * @see AngularZF1_Angular
  */
-require_once "AngularZF1/Angular.php";
+require_once "AngularZF1/Js.php";
 
 /**
  * @see AngularZF1_Angular_Application_Resource_Plugin_Interface
