@@ -15,7 +15,7 @@
  * @category    AngularZF1
  * @package     AngularZF1_Angular
  * @subpackage  View
- * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosina.me)
+ * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosinabignall.com)
  * @license     http://opensource.org/licenses/bsd-license.php     New BSD License
  */
 
@@ -45,7 +45,7 @@ require_once "AngularZF1/Js/View/Helper/Js/Container.php";
  * @uses 	   Zend_Json
  * @package    AngularZF1_Js
  * @subpackage View
- * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosina.me)
+ * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosinabignall.com)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
 class AngularZF1_Js_View_Helper_Js extends Zend_View_Helper_Abstract

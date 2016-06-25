@@ -15,7 +15,7 @@
  * @category    AngularZF1
  * @package     AngularZF1_Js
  * @subpackage  View
- * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosina.me)
+ * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosinabignall.com)
  * @license     http://opensource.org/licenses/bsd-license.php     New BSD License
  */
 
@@ -23,7 +23,7 @@
  * Angular Global Class holding constants and static convienience methods.
  *
  * @package    AngularZF1_Js
- * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosina.me)
+ * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosinabignall.com)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
   */
 class AngularZF1_Js

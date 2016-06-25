@@ -15,7 +15,7 @@
  * @category    AngularZF1
  * @package     AngularZF1_Js
  * @subpackage  View
- * @copyright  Copyright (c) 2016 Rosina Bignall (http://rosina.me)
+ * @copyright  Copyright (c) 2016 Rosina Bignall (http://rosinabignall.com)
  * @license     http://opensource.org/licenses/bsd-license.php     New BSD License
  */
 
@@ -34,7 +34,7 @@ require_once "AngularZF1/Js/View/Helper/Js/Container.php";
  *
  * @package    AngularZF1_Js
  * @subpackage View
- * @copyright  Copyright (c) 2016 Rosina Bignall (http://rosina.me)
+ * @copyright  Copyright (c) 2016 Rosina Bignall (http://rosinabignall.com)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
 class AngularZF1_Js_View_Helper_JsLodash extends Zend_View_Helper_Abstract
