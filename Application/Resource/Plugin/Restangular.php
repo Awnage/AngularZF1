@@ -212,7 +212,7 @@ class AngularZF1_Application_Resource_Plugin_Restangular
     public function addScripts(Zend_View_Interface $view)
     {
         // Angular-Restangular requires the following libraries
-        $view->angularLodash();
+        $view->jsLodash();
         // Add the Angular-Restangular scripts
         $view->headScript()->appendFile($this->_getPath());
     }

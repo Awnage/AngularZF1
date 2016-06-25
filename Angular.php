@@ -33,7 +33,7 @@ class AngularZF1_Angular
      * 
      * @const string
      */
-    const DEFAULT_ANGULAR_VERSION = "1.0.2";
+    const DEFAULT_ANGULAR_VERSION = "1.5.7";
 
     /**
      * @see https://developers.google.com/speed/libraries/devguide#angularjs

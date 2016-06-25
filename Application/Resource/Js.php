@@ -20,18 +20,17 @@
  */
 
 /**
- * Angular application resource
+ * Js application resource
  *
  * Example configuration:
  * <pre>
- *   resources.Angular.version = 1.0.1               ; <null>
- *   resources.Angular.localpath = "/foo/bar"
- *   resources.Angular.enable = true
- *   resources.Angular.render_mode = 255 ; default
- *   resources.Angular.rendermode = 255 ; default
+ *   resources.Js.enable = true
+ *   resources.Js.render_mode = 255 ; default
+ *   resources.Js.rendermode = 255 ; default
+ *   resources.Js.minified = true
  *
- *   resources.Angular.javascriptfile = "/some/file.js"
- *   resources.Angular.javascriptfiles.0 = "/some/file.js"
+ *   resources.Js.javascriptfile = "/some/file.js"
+ *   resources.Js.javascriptfiles.0 = "/some/file.js"
  * </pre>
  *
  * Resource for settings Angular options
@@ -43,13 +42,13 @@
  * @copyright  Copyright (c) 2012 Gregory Wilson (http://www.drakos7.net)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
-class AngularZF1_Application_Resource_Angular
+class AngularZF1_Application_Resource_Js
     extends Zend_Application_Resource_ResourceAbstract
 {
     /**
-     * @var AngularZF1_Angular_View_Helper_Angular_Container
+     * @var AngularZF1_Js_View_Helper_Js_Container
      */
-    protected $_angular;
+    protected $_js;
 
     /**
      * @var Zend_View
@@ -70,53 +69,41 @@ class AngularZF1_Application_Resource_Angular
      * @var array
      */
     public static $standardPlugins = array(
-        'Resource',
-        'Route',
-        'Sanitize',
-        'Ui',
-        'Uibootstrap',
-        'Animate',
-        'Aria',
-        'Messages',
-        'Material',
-        'Filter',
-        'Restangular',
-        'Lodash',
-        'Uirouter'
-        );
+        'Lodash'
+    );
 
     /**
      * Defined by Zend_Application_Resource_Resource
      *
-     * @return AngularZF1_Angular_View_Helper_Angular_Container
+     * @return AngularZF1_Angular_View_Helper_Js_Container
      */
     public function init()
     {
-        return $this->getAngular();
+        return $this->getJs();
     }
 
     /**
      * Retrieve Angular View Helper
      *
-     * @return AngularZF1_Angular_View_Helper_Angular_Container
+     * @return AngularZF1_Js_View_Helper_Js_Container
      */
-    public function getAngular()
+    public function getJs()
     {
-        if (null === $this->_angular) {
+        if (null === $this->_js) {
             $this->getBootstrap()->bootstrap('view');
             $this->_view = $this->getBootstrap()->view;
 
-            AngularZF1_Angular::enableView($this->_view);
+            AngularZF1_Js::enableView($this->_view);
             $this->_parseOptions($this->getOptions());
 
             $this->_angular = $this->_view->angular();
         }
 
-        return $this->_angular;
+        return $this->_js;
     }
 
     /**
-     * Parse options to find those pertinent to angular helper and invoke them
+     * Parse options to find those pertinent to js helper and invoke them
      *
      * @param  array $options
      * @return void
@@ -125,12 +112,6 @@ class AngularZF1_Application_Resource_Angular
     {
         foreach ($options as $key => $value) {
             switch(strtolower($key)) {
-                case 'version':
-                    $this->_view->Angular()->setVersion($value);
-                    break;
-                case 'localpath':
-                    $this->_view->Angular()->setLocalPath($value);
-                    break;
                 case 'minified':
                     $this->_view->Angular()->setMinified($value);
                     break;
@@ -155,9 +136,9 @@ class AngularZF1_Application_Resource_Angular
         if ((isset($options['enable']) && (bool) $options['enable'])
            || !isset($options['enable']))
         {
-            $this->_view->Angular()->enable();
+            $this->_view->Js()->enable();
         } else {
-            $this->_view->Angular()->disable();
+            $this->_view->Js()->disable();
         }
     }
 
@@ -169,7 +150,7 @@ class AngularZF1_Application_Resource_Angular
      */
     protected function _registerPlugins($plugins)
     {
-        $angular = $this->_view->Angular();
+        $angular = $this->_view->Js();
 
         foreach ($plugins as $plugin => $options) {
             // Register an instance
@@ -184,13 +165,13 @@ class AngularZF1_Application_Resource_Angular
             $plugin = ucfirst($plugin);
 
             // Register a classname
-            if (in_array($plugin, AngularZF1_Application_Resource_Angular::$standardPlugins)) {
+            if (in_array($plugin, AngularZF1_Application_Resource_Js::$standardPlugins)) {
                 // standard plugin
                 $pluginClass = 'AngularZF1_Application_Resource_Plugin_' . $plugin;
             } else {
                 // we use a custom plugin
                 if (!preg_match('~^[\w]+$~D', $plugin)) {
-                    throw new Zend_Exception("AngularZF1: Invalid Angular plugin name [$plugin]");
+                    throw new Zend_Exception("AngularZF1: Invalid Js plugin name [$plugin]");
                 }
                 $pluginClass = $plugin;
             }
