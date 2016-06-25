@@ -54,7 +54,7 @@ class AngularZF1_Js_View_Helper_JsLodash extends Zend_View_Helper_Abstract
     {
         $registry = Zend_Registry::getInstance();
         if (!isset($registry[self::JS_REGISTRY])) {
-            require_once 'AngularZF1/Angular/View/Helper/Js/Container.php';
+            require_once 'AngularZF1/Js/View/Helper/Js/Container.php';
             $container = new AngularZF1_Js_View_Helper_Js_Container();
             $registry[self::JS_REGISTRY] = $container;
         }
