@@ -48,7 +48,7 @@ require_once "AngularZF1/Js/View/Helper/Js/Container.php";
  * @copyright  Copyright (c) 2016 Rosina Bignall (http://www.rosina.me)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
-class AngularZF1_Angular_View_Helper_Js extends Zend_View_Helper_Abstract
+class AngularZF1_Js_View_Helper_Js extends Zend_View_Helper_Abstract
 {
     /**
      * @var Zend_View_Interface
