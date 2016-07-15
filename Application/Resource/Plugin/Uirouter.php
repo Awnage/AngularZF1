@@ -63,7 +63,7 @@ class AngularZF1_Application_Resource_Plugin_Uirouter
     /**
      * @const string
      */
-    const DEFAULT_VERSION = '1.0.0-alpha.5';
+    const DEFAULT_VERSION = '1.0.0-beta.1';
 
     /**
      * Default uses compressed version, because this is assumed to be the use case
