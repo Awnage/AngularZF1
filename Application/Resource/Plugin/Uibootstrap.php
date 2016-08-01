@@ -256,8 +256,10 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         } else {
             $baseUri = $this->_base;
         }
+        $version = $this->getVersion();
 
         $source = $baseUri
+            . ($version != null ? '-' . $version : '')
             . ($this->_angular->isMinified()==true? self::MIN_PATH : self::PATH);
         return $source;
     }
@@ -275,10 +277,8 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         } else {
             $baseUri = $this->_base;
         }
-        $version = $this->getVersion();
 
         $source = $baseUri
-            . ($version != null ? '-' . $version : '')
             . ($this->_angular->isMinified() == true ? self::MIN_CSS : self::CSS);
         return $source;
     }
