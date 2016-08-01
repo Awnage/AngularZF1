@@ -69,7 +69,8 @@ class AngularZF1_Application_Resource_Js
      * @var array
      */
     public static $standardPlugins = array(
-        'Lodash'
+        'Lodash',
+        'Moment'
     );
 
     /**

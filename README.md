@@ -78,6 +78,7 @@ You can include additional plugins by modifying your config.ini to include
     ; Angular UI Bootstrap
     resources.Angular.plugin.uibootstrap.enable = false
     resources.Angular.plugin.uibootstrap.base = '/js'
+    resources.Angular.plugin.uibootstrap.version = '2.0.0'
     ; Angular animate
     resources.Angular.plugin.animate.enable = false
     ; Angular aria
