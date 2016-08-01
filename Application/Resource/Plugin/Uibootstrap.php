@@ -133,10 +133,13 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
             switch(strtolower($key)) {
                 case 'enable':
                     $this->_enable = (boolean) $value;
-                break;
+                    break;
                 case 'base':
                     $this->_base = (string) $value;
-                break;
+                    break;
+                case 'version':
+                    $this->setVersion($value);
+                    break;
             }
         }
     }
@@ -259,8 +262,9 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         $version = $this->getVersion();
 
         $source = $baseUri
+            . self::PATH
             . ($version != null ? '-' . $version : '')
-            . ($this->_angular->isMinified()==true? self::MIN_PATH : self::PATH);
+            . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
         return $source;
     }
 

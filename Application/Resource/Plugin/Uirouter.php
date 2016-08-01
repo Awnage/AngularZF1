@@ -233,7 +233,7 @@ class AngularZF1_Application_Resource_Plugin_Uirouter
     protected function _getPath()
     {
         $source = $this->_getBasePath()
-            . ($this->_angular->isMinified()==true? self::MIN_PATH : self::PATH);
+            . ($this->_angular->isMinified()==true? self::PATH : self::PATH);
         return $source;
     }
 
