@@ -231,7 +231,9 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      */
     public function addScripts(Zend_View_Interface $view)
     {
-        $view->headScript()->appendFile($this->_getPath());
+        $paths = $this->_getPath();
+        $view->headScript()->appendFile($paths[0]);
+        $view->headScript()->appendFile($paths[1]);
         $view->headLink()->appendStylesheet($this->_getCssPath());
     }
 
@@ -265,7 +267,12 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
             . self::PATH
             . ($version != null ? '-' . $version : '')
             . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
-        return $source;
+        $templates = $baseUri
+            . self::PATH
+            . '-tpls'
+            . ($version != null ? '-' . $version : '')
+            . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
+        return array($source, $templates);
     }
 
     /**
