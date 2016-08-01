@@ -50,13 +50,26 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     const IDENTIFIER = 'UiBootstrap';
 
     /**
+     * Plugin Identifier
+     * @const string Plugin Identifier
+     */
+    const DEFAULT_VERSION = null;
+    /**
+     * Base name of the ui-bootstrap file. Naming convention is <path>-<version><extension>
+     *
+     * @see https://developers.google.com/speed/libraries/devguide#angularjs
+     * @const string File path after base
+     */
+    const PATH = '/ui-bootstrap';
+
+    /**
      * Default uses compressed version, because this is assumed to be the use case
      * in production enviroment.
      *
      * @see https://developers.google.com/speed/libraries/devguide#angularjs
      * @const string File path after base and version
      */
-    const MIN_PATH = '/ui-bootstrap.min.js';
+    const MIN_EXT = '.min.js';
 
     /**
      * Non-compressed version.
@@ -64,7 +77,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      * @see https://developers.google.com/speed/libraries/devguide#angularjs
      * @const string File path after base and version
      */
-    const PATH = '/ui-bootstrap.js';
+    const EXT = '.js';
 
     /**
      * Default uses compressed version, because this is assumed to be the use case
@@ -101,6 +114,12 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      */
     protected $_enabled = false;
 
+    /**
+     * Indicates version to use
+     *
+     * @var string
+     */
+    protected $_version = self::DEFAULT_VERSION;
 
     /**
      *
@@ -164,6 +183,27 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         return self::IDENTIFIER;
     }
 
+    /**
+     * Set the version of the UI Bootstrap library used.
+     *
+     * @param string $version
+     * @return AngularZF1_Application_Resource_Plugin_Uibootstrap
+     */
+    public function setVersion($version)
+    {
+        $this->_version = $version;
+        return $this;
+    }
+
+    /**
+     * Get the version used with the UI Bootstrap library
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->_version;
+    }
 
     /**
      * Renders all javascript file related stuff of the Angular enviroment.
@@ -235,9 +275,11 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         } else {
             $baseUri = $this->_base;
         }
+        $version = $this->getVersion();
 
         $source = $baseUri
-            . ($this->_angular->isMinified()==true? self::MIN_CSS : self::CSS);
+            . ($version != null ? '-' . $version : '')
+            . ($this->_angular->isMinified() == true ? self::MIN_CSS : self::CSS);
         return $source;
     }
 

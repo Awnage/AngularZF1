@@ -168,7 +168,7 @@ class AngularZF1_Application_Resource_Plugin_Restangular
     }
 
     /**
-     * Set the version of the Angular Material library used.
+     * Set the version of the Restangular library used.
      *
      * @param string $version
      * @return AngularZF1_Application_Resource_Plugin_Restangular
@@ -180,7 +180,7 @@ class AngularZF1_Application_Resource_Plugin_Restangular
     }
 
     /**
-     * Get the version used with the Angular library
+     * Get the version used with the Restangular library
      *
      * @return string
      */

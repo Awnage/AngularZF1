@@ -62,7 +62,7 @@ class AngularZF1_Angular_View_Helper_AngularUibootstrap extends Zend_View_Helper
     }
 
     /**
-     * Return Angular View Helper class, to execute Angular library related functions.
+     * Return Angular View Helper class, to execute UI Bootstrap library related functions.
      *
      * @return void
      */
