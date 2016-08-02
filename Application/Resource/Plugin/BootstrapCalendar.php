@@ -61,6 +61,8 @@ class AngularZF1_Application_Resource_Plugin_BootstrapCalendar
      * @const string File path after base
      */
     const PATH = '/angular-bootstrap-calendar';
+    const JS_PATH = '/js';
+    const CSS_PATH = '/css';
 
     /**
      * Default uses compressed version, because this is assumed to be the use case
@@ -70,6 +72,7 @@ class AngularZF1_Application_Resource_Plugin_BootstrapCalendar
      * @const string File path after base and version
      */
     const MIN_EXT = '.min.js';
+    const CSS_MIN_EXT = '.min.css';
 
     /**
      * Non-compressed version.
@@ -78,13 +81,14 @@ class AngularZF1_Application_Resource_Plugin_BootstrapCalendar
      * @const string File path after base and version
      */
     const EXT = '.js';
+    const CSS_EXT = '.css';
 
     /**
      * Default Base URI
      *
      * @const string Base uri
      */
-    const DEFAULT_BASE_URI = '/js';
+    const DEFAULT_BASE_URI = '/js/angular-bootstrap-calendar';
 
     /**
      * Base URI
@@ -107,6 +111,13 @@ class AngularZF1_Application_Resource_Plugin_BootstrapCalendar
     protected $_version = self::DEFAULT_VERSION;
 
     /**
+     * Indicates whether to use the templates version
+     *
+     * @var string
+     */
+    protected $_templates = true;
+
+    /**
      *
      * @param <type> $options
      * @param <type> $angular
@@ -124,6 +135,9 @@ class AngularZF1_Application_Resource_Plugin_BootstrapCalendar
                     break;
                 case 'version':
                     $this->setVersion($value);
+                    break;
+                case 'templates':
+                    $this->_templates = (bool) $value;
                     break;
             }
         }
@@ -246,11 +260,11 @@ class AngularZF1_Application_Resource_Plugin_BootstrapCalendar
         } else {
             $baseUri = $this->_base;
         }
-        $version = $this->getVersion();
 
         $source = $baseUri
+            . self::JS_PATH
             . self::PATH
-            . ($version != null ? '-' . $version : '')
+            . ($this->_templates ? '-tpls' : '')
             . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
         return $source;
     }
@@ -270,7 +284,9 @@ class AngularZF1_Application_Resource_Plugin_BootstrapCalendar
         }
 
         $source = $baseUri
-            . ($this->_angular->isMinified() == true ? self::MIN_CSS : self::CSS);
+            . self::CSS_PATH
+            . self::PATH
+            . ($this->_angular->isMinified() == true ? self::CSS_MIN_EXT : self::CSS_EXT);
         return $source;
     }
 

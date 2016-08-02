@@ -267,11 +267,15 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
             . self::PATH
             . ($version != null ? '-' . $version : '')
             . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
-        $templates = $baseUri
-            . self::PATH
-            . '-tpls'
-            . ($version != null ? '-' . $version : '')
-            . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
+        if ($version) { // if no version is set then they are probably using an old version that doesn't have templates
+            $templates = $baseUri
+                . self::PATH
+                . '-tpls'
+                . ($version != null ? '-' . $version : '')
+                . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
+        } else {
+            $templates = '';
+        }
         return array($source, $templates);
     }
 
