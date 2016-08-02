@@ -217,7 +217,8 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     {
         $scriptTags = '';
         $source = $this->_getPath();
-        $scriptTags .= '<script type="text/javascript" src="' . $source . '"></script>';
+        $scriptTags .= '<script type="text/javascript" src="' . $source[0] . '"></script>';
+        $scriptTags .= '<script type="text/javascript" src="' . $source[1] . '"></script>';
         $source = $this->_getCssPath();
         $scriptTags .= '<script type="text/css" src="' . $source . '"></script>';
         return $scriptTags;
