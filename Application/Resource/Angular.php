@@ -81,8 +81,8 @@ class AngularZF1_Application_Resource_Angular
         'Material',
         'Filter',
         'Restangular',
-        'Uirouter'
-        'BootstrapCalendar'
+        'Uirouter',
+        'BootstrapCalendar',
         );
 
     /**
