@@ -234,6 +234,7 @@ class AngularZF1_Application_Resource_Plugin_BootstrapCalendar
 
         // Add the angular-bootstrap-calendar script
         $view->headScript()->appendFile($this->_getPath());
+        $view->headLink()->appendStylesheet($this->_getCssPath());
     }
 
 

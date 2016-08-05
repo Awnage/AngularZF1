@@ -114,18 +114,18 @@ class AngularZF1_Application_Resource_Js
         foreach ($options as $key => $value) {
             switch(strtolower($key)) {
                 case 'minified':
-                    $this->_view->Angular()->setMinified($value);
+                    $this->_view->Js()->setMinified($value);
                     break;
                 case 'render_mode':
                 case 'rendermode':
-                    $this->_view->Angular()->setRenderMode($value);
+                    $this->_view->Js()->setRenderMode($value);
                     break;
                 case 'javascriptfile':
-                    $this->_view->Angular()->addJavascriptFile($value);
+                    $this->_view->Js()->addJavascriptFile($value);
                     break;
                 case 'javascriptfiles':
                     foreach($options['javascriptfiles'] as $file) {
-                        $this->_view->Angular()->addJavascriptFile($file);
+                        $this->_view->Js()->addJavascriptFile($file);
                     }
                     break;
                 case 'plugin':
@@ -151,12 +151,12 @@ class AngularZF1_Application_Resource_Js
      */
     protected function _registerPlugins($plugins)
     {
-        $angular = $this->_view->Js();
+        $js = $this->_view->Js();
 
         foreach ($plugins as $plugin => $options) {
             // Register an instance
             if (is_object($plugin) && in_array('AngularZF1_Application_Resource_Plugin_Interface', class_implements($plugin))) {
-                $angular->registerPlugin($plugin);
+                $js->registerPlugin($plugin);
                 continue;
             }
 
@@ -178,8 +178,8 @@ class AngularZF1_Application_Resource_Js
             }
 
             require_once str_replace('_', DIRECTORY_SEPARATOR, $pluginClass) . '.php';
-            $object = new $pluginClass($options, $angular);
-            $angular->registerPlugin($object);
+            $object = new $pluginClass($options, $js);
+            $js->registerPlugin($object);
         }
     }
 
