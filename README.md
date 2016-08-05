@@ -151,7 +151,8 @@ version by setting resources.Angular.version in your application config.
 The angular-filter and angular-material plugins also use default versions
 and can be overridden by setting the .version for the plugin.
 
-Notes:
+####Notes:
+
 Lodash isn't an angular module, but it's required by Restangular so
 we make it easy by making a plugin for it. The Restangular plugin will
 automatically include Lodash in the view.
