@@ -206,7 +206,7 @@ class AngularZF1_Angular_View_Helper_Angular_Container
         $this->_minified = ($bool==true);
         return $this;
     }
-    
+
     /**
      * Use the minified version (true) or dev version (false)?
      *
@@ -563,13 +563,13 @@ class AngularZF1_Angular_View_Helper_Angular_Container
         document.createElement('ng-include');
         document.createElement('ng-pluralize');
         document.createElement('ng-view');
- 
+
         // Optionally these for CSS
         document.createElement('ng:include');
         document.createElement('ng:pluralize');
         document.createElement('ng:view');
       </script>
-    <![endif]--> 
+    <![endif]-->
 IEHAPPY;
 
         foreach ($this->_plugins as $plugin) {
@@ -641,7 +641,8 @@ IEHAPPY;
     protected function _getAngularLibraryPath()
     {
         if($this->_angularLibraryPath != null) {
-            $source = $this->_angularLibraryPath;
+            $source = $this->_angularLibraryPath .
+              ($this->_minified==true? AngularZF1_Angular::CDN_ANGULAR_MIN_PATH_GOOGLE : AngularZF1_Angular::CDN_ANGULAR_PATH_GOOGLE);
         } else {
             $baseUri = $this->_getAngularLibraryBaseCdnUri();
             $source = $baseUri .
