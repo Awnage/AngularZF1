@@ -36,7 +36,7 @@ Add the following line to the head section of your layout.phtml
 ```
     
 Note: These are not needed if .enable is set to true in your config ini. 
-Also <?php $this->js(); ?> is optional if none of the Javascript 
+Also `<?php $this->js(); ?>` is optional if none of the Javascript 
 plugins are enabled in the config and there are no javascript files included 
 in the resources config.
 
@@ -51,24 +51,25 @@ angular data-binding.
 ## Plugins
 
 Current Angular plugins include 
-[angular-resource](https://docs.angularjs.org/api/ngResource), 
-[angular-route](https://docs.angularjs.org/api/ngRoute), 
-[angular-sanitize](https://docs.angularjs.org/api/ngSanitize), 
-[angular-ui](http://angular-ui.github.io/), 
-[angular-ui-router](https://github.com/angular-ui/ui-router), 
-[angular-uibootstrap](https://angular-ui.github.io/bootstrap/), 
-[angular-animate](https://docs.angularjs.org/api/ngAnimate), 
-[angular-aria](https://docs.angularjs.org/api/ngAria), 
-[angular-messages](https://docs.angularjs.org/api/ngMessages),
-[angular-material](https://material.angularjs.org/), 
-[angular-filter](https://github.com/a8m/angular-filter#angular-filter-----),
-[Restangular](https://github.com/mgonto/restangular),
-[angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar)
-[angular-addtocalendar](https://github.com/jshor/angular-addtocalendar),
-[angular-filesaver](https://github.com/alferov/angular-file-saver)
+* [angular-resource](https://docs.angularjs.org/api/ngResource), 
+* [angular-route](https://docs.angularjs.org/api/ngRoute), 
+* [angular-sanitize](https://docs.angularjs.org/api/ngSanitize), 
+* [angular-ui](http://angular-ui.github.io/), 
+* [angular-ui-router](https://github.com/angular-ui/ui-router), 
+* [angular-uibootstrap](https://angular-ui.github.io/bootstrap/), 
+* [angular-animate](https://docs.angularjs.org/api/ngAnimate), 
+* [angular-aria](https://docs.angularjs.org/api/ngAria), 
+* [angular-messages](https://docs.angularjs.org/api/ngMessages),
+* [angular-material](https://material.angularjs.org/), 
+* [angular-filter](https://github.com/a8m/angular-filter#angular-filter-----),
+* [Restangular](https://github.com/mgonto/restangular),
+* [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar)
+* [angular-addtocalendar](https://github.com/jshor/angular-addtocalendar),
+* [angular-filesaver](https://github.com/alferov/angular-file-saver)
 
 Current Javascript plugins include 
-and [Lodash](https://lodash.com/), [Moment](http://momentjs.com/). 
+* [Lodash](https://lodash.com/), 
+* [Moment](http://momentjs.com/). 
 
 You can include additional plugins by modifying your config.ini to include
 
@@ -173,10 +174,16 @@ your view.
 
 Notes:
 Lodash and Moment aren't angular modules, but they are required by other
-angular modules so
-we make it easy by making a plugin for it. The Restangular plugin will
-automatically include Lodash in the view. angular-bootstrap-calendar will
-automatically include Moment in the view.
+angular modules so we make it easy by making a plugin for it. 
 
-Aria, Messages and Animate are required by Angular Material, so they are
+Dependencies are automatically included whenever possible:
+
+* The Restangular plugin will
+automatically include Lodash in the view. 
+* angular-bootstrap-calendar will
+automatically include Moment in the view.
+* Aria, Messages and Animate are required by Angular Material, so they are
 automatically included in the view when Material is included.
+* Angular-addtocalendar depends on angular-file-saver so it is 
+automatically included in the view when AddToCalendar is included.
+
