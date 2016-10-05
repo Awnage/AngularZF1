@@ -187,3 +187,19 @@ automatically included in the view when Material is included.
 * Angular-addtocalendar depends on angular-file-saver so it is 
 automatically included in the view when AddToCalendar is included.
 
+##Updates
+
+### Oct 5, 2016
+
+Added plugins for angular-addtocalendar and angular-file-saver.
+
+###Aug 5, 2016
+
+Added plugins for angular-bootstrap-calendar and Moment. Fixed the settings
+in the JS initilization which were modifying angular settings instead of
+js settings.  Updated default angular version to 1.5.7.
+
+##Acknowledgments
+
+This module was written and continues to be developed as part of my work
+for Social & Scientific Systems, Inc. (http://s-3.com/).
