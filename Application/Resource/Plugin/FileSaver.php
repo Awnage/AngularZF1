@@ -39,7 +39,7 @@ require_once "AngularZF1/Application/Resource/Plugin/Interface.php";
  * @copyright  Copyright (c) 2012 Rosina Bignall (http://rosinabignall.com)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
-class AngularZF1_Application_Resource_Plugin_Uibootstrap
+class AngularZF1_Application_Resource_Plugin_FileSaver
     implements AngularZF1_Application_Resource_Plugin_Interface
 {
 
@@ -47,7 +47,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      * Plugin Identifier
      * @const string Plugin Identifier
      */
-    const IDENTIFIER = 'UiBootstrap';
+    const IDENTIFIER = 'FileSaver';
 
     /**
      * Plugin Identifier
@@ -55,12 +55,12 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      */
     const DEFAULT_VERSION = null;
     /**
-     * Base name of the ui-bootstrap file. Naming convention is <path>-<version><extension>
+     * Base name of the file. Naming convention is <path>-<version><extension>
      *
      * @see https://developers.google.com/speed/libraries/devguide#angularjs
      * @const string File path after base
      */
-    const PATH = '/ui-bootstrap';
+    const PATH = '/angular-file-saver';
 
     /**
      * Default uses compressed version, because this is assumed to be the use case
@@ -80,21 +80,6 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     const EXT = '.js';
 
     /**
-     * Default uses compressed version, because this is assumed to be the use case
-     * in production enviroment.
-     *
-     * @const string File path after base and version
-     */
-    const MIN_CSS = '/bootstrap.min.css';
-
-    /**
-     * Non-compressed version.
-     *
-     * @const string File path after base and version
-     */
-    const CSS = '/bootstrap.css';
-
-    /**
      * Default Base URI
      *
      * @const string Base uri
@@ -106,6 +91,13 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      * @var string
      */
     protected $_base = null;
+
+    /**
+     * Base name of the file (default: self::PATH)
+     *
+     * @var string
+     */
+    protected $_path = self::PATH;
 
     /**
      * Indicates whether the script resource should be added to all pages
@@ -137,6 +129,9 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
                 case 'base':
                     $this->_base = (string) $value;
                     break;
+                case 'path':
+                    $this->_path = (string) $value;
+                    break;
                 case 'version':
                     $this->setVersion($value);
                     break;
@@ -145,9 +140,9 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Enable Angular UI whenever Angular is included
+     * Enable the plugin
      *
-     * @return AngularZF1_Application_Resource_Plugin_UI
+     * @return AngularZF1_Application_Resource_Plugin_FileSaver
      */
     public function enable()
     {
@@ -156,9 +151,9 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Disable Angular UI unless specifically added
+     * Disable the plugin unless specifically added
      *
-     * @return AngularZF1_Application_Resource_Plugin_UI
+     * @return AngularZF1_Application_Resource_Plugin_FileSaver
      */
     public function disable()
     {
@@ -167,7 +162,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Is Angular Resource enabled?
+     * Is enabled?
      *
      * @return boolean
      */
@@ -186,11 +181,22 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         return self::IDENTIFIER;
     }
 
+    public function setPath($path)
+    {
+        $this->_path = $path;
+        return $this;
+    }
+
+    public function getPath()
+    {
+        return $this->_path;
+    }
+
     /**
-     * Set the version of the UI Bootstrap library used.
+     * Set the version of the library used. (currently unused)
      *
      * @param string $version
-     * @return AngularZF1_Application_Resource_Plugin_Uibootstrap
+     * @return AngularZF1_Application_Resource_Plugin_FileSaver
      */
     public function setVersion($version)
     {
@@ -199,7 +205,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Get the version used with the UI Bootstrap library
+     * Get the version used with the library
      *
      * @return string
      */
@@ -218,8 +224,6 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         $scriptTags = '';
         $source = $this->_getPath();
         $scriptTags .= '<script type="text/javascript" src="' . $source . '"></script>';
-        $source = $this->_getCssPath();
-        $scriptTags .= '<script type="text/css" src="' . $source . '"></script>';
         return $scriptTags;
     }
 
@@ -231,10 +235,13 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      */
     public function addScripts(Zend_View_Interface $view)
     {
-        $paths = $this->_getPath();
-        $view->headScript()->appendFile($paths[0]);
-        $view->headScript()->appendFile($paths[1]);
-        $view->headLink()->appendStylesheet($this->_getCssPath());
+        // angular-FileSaver depends on these modules as well
+        // Note: these are currently not implemented. If the bundle is not used then these need to be implemented
+        //$view->jsFileSaver();
+        //$view->jsBlob();
+
+        // Add the angular-filesaver script
+        $view->headScript()->appendFile($this->_getPath());
     }
 
 
@@ -264,15 +271,10 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         $version = $this->getVersion();
 
         $source = $baseUri
-            . self::PATH
+            . $this->_path
             . ($version != null ? '-' . $version : '')
             . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
-        $templates = $baseUri
-            . self::PATH
-            . '-tpls'
-            . ($version != null ? '-' . $version : '')
-            . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
-        return array($source, $templates);
+        return $source;
     }
 
     /**

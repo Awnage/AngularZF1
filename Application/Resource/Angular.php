@@ -83,6 +83,8 @@ class AngularZF1_Application_Resource_Angular
         'Restangular',
         'Uirouter',
         'BootstrapCalendar',
+        'AddToCalendar',
+        'FileSaver'
         );
 
     /**

@@ -39,7 +39,7 @@ require_once "AngularZF1/Application/Resource/Plugin/Interface.php";
  * @copyright  Copyright (c) 2012 Rosina Bignall (http://rosinabignall.com)
  * @license    http://opensource.org/licenses/bsd-license.php     New BSD License
  */
-class AngularZF1_Application_Resource_Plugin_Uibootstrap
+class AngularZF1_Application_Resource_Plugin_AddToCalendar
     implements AngularZF1_Application_Resource_Plugin_Interface
 {
 
@@ -47,7 +47,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      * Plugin Identifier
      * @const string Plugin Identifier
      */
-    const IDENTIFIER = 'UiBootstrap';
+    const IDENTIFIER = 'AddToCalendar';
 
     /**
      * Plugin Identifier
@@ -60,7 +60,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      * @see https://developers.google.com/speed/libraries/devguide#angularjs
      * @const string File path after base
      */
-    const PATH = '/ui-bootstrap';
+    const PATH = '/addtocalendar';
 
     /**
      * Default uses compressed version, because this is assumed to be the use case
@@ -78,21 +78,6 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      * @const string File path after base and version
      */
     const EXT = '.js';
-
-    /**
-     * Default uses compressed version, because this is assumed to be the use case
-     * in production enviroment.
-     *
-     * @const string File path after base and version
-     */
-    const MIN_CSS = '/bootstrap.min.css';
-
-    /**
-     * Non-compressed version.
-     *
-     * @const string File path after base and version
-     */
-    const CSS = '/bootstrap.css';
 
     /**
      * Default Base URI
@@ -145,9 +130,9 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Enable Angular UI whenever Angular is included
+     * Enable the plugin
      *
-     * @return AngularZF1_Application_Resource_Plugin_UI
+     * @return AngularZF1_Application_Resource_Plugin_AddToCalendar
      */
     public function enable()
     {
@@ -156,9 +141,9 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Disable Angular UI unless specifically added
+     * Disable the plugin unless specifically added
      *
-     * @return AngularZF1_Application_Resource_Plugin_UI
+     * @return AngularZF1_Application_Resource_Plugin_AddToCalendar
      */
     public function disable()
     {
@@ -167,7 +152,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Is Angular Resource enabled?
+     * Is enabled?
      *
      * @return boolean
      */
@@ -187,10 +172,10 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Set the version of the UI Bootstrap library used.
+     * Set the version of the library used. (currently unused)
      *
      * @param string $version
-     * @return AngularZF1_Application_Resource_Plugin_Uibootstrap
+     * @return AngularZF1_Application_Resource_Plugin_AddToCalendar
      */
     public function setVersion($version)
     {
@@ -199,7 +184,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
     }
 
     /**
-     * Get the version used with the UI Bootstrap library
+     * Get the version used with the library
      *
      * @return string
      */
@@ -218,8 +203,6 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
         $scriptTags = '';
         $source = $this->_getPath();
         $scriptTags .= '<script type="text/javascript" src="' . $source . '"></script>';
-        $source = $this->_getCssPath();
-        $scriptTags .= '<script type="text/css" src="' . $source . '"></script>';
         return $scriptTags;
     }
 
@@ -231,10 +214,12 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      */
     public function addScripts(Zend_View_Interface $view)
     {
-        $paths = $this->_getPath();
-        $view->headScript()->appendFile($paths[0]);
-        $view->headScript()->appendFile($paths[1]);
-        $view->headLink()->appendStylesheet($this->_getCssPath());
+        // angular-addtocalendar depends on these modules as well
+        $view->jsMoment();
+        $view->angularFileSaver();
+
+        // Add the angular-bootstrap-calendar script
+        $view->headScript()->appendFile($this->_getPath());
     }
 
 
@@ -267,12 +252,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
             . self::PATH
             . ($version != null ? '-' . $version : '')
             . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
-        $templates = $baseUri
-            . self::PATH
-            . '-tpls'
-            . ($version != null ? '-' . $version : '')
-            . ($this->_angular->isMinified()==true? self::MIN_EXT : self::EXT);
-        return array($source, $templates);
+        return $source;
     }
 
     /**
