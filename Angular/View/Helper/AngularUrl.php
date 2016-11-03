@@ -48,9 +48,10 @@ class AngularZF1_Angular_View_Helper_AngularUrl
         $router = Zend_Controller_Front::getInstance()->getRouter();
         $url = $router->assemble($urlOptions, $name, $reset, $encode);
         
-        //unencode {{ }} 
+        //unencode {{ }} and :
         $url = str_replace('%7B%7B', '{{', $url);
         $url = str_replace('%7D%7D', '}}', $url);
+        $url = str_replace('%3A', ':', $url);
         return $url;
     }   
     
