@@ -68,7 +68,7 @@ class AngularZF1_Angular_View_Helper_AngularUibootstrap extends Zend_View_Helper
      */
     public function angularUibootstrap()
     {
-        $plugin = $this->_container->getPlugin('UiBootstrap');
+        $plugin = $this->_container->getPlugin('Uibootstrap');
         if ($plugin) {
             $plugin->addScripts($this->view);
         }

@@ -47,7 +47,7 @@ class AngularZF1_Application_Resource_Plugin_Uibootstrap
      * Plugin Identifier
      * @const string Plugin Identifier
      */
-    const IDENTIFIER = 'UiBootstrap';
+    const IDENTIFIER = 'Uibootstrap';
 
     /**
      * Plugin Identifier
